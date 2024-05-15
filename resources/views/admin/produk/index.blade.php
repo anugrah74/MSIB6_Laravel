@@ -23,22 +23,40 @@
             <table id="datatablesSimple">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>No</th>
+                        <th>kode</th>
+                        <th>Nama</th>
+                        <th>Harga Beli</th>
+                        <th>Harga Jual</th>
+                        <th>Stok</th>
+                        <th>Minimal Stok</th>
                         <th>Jenis Produk</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
+                        <th>No</th>
+                        <th>kode</th>
+                        <th>Nama</th>
+                        <th>Harga Beli</th>
+                        <th>Harga Jual</th>
+                        <th>Stok</th>
+                        <th>Minimal Stok</th>
                         <th>Jenis Produk</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @php $no=1 @endphp
-                    @foreach($jenis as $j)
+                    @foreach($produk as $p)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$j->nama}}</td>
+                        <td>{{$p->kode}}</td>
+                        <td>{{$p->nama}}</td>
+                        <td>{{$p->harga_beli}}</td>
+                        <td>{{$p->harga_jual}}</td>
+                        <td>{{$p->stok}}</td>
+                        <td>{{$p->minimal_stok}}</td>
+                        <td>{{$p->jenis_produk}}</td>
                     </tr>
                     @endforeach
                 </tbody>

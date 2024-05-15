@@ -1,30 +1,24 @@
 <?php
-// jenis prooduk dan produkakan dibuat menggunakan
-// type penulisan Query Builder
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Produk;
 use App\Models\JenisProduk;
-//use DB:
-// library DB ini digunakan ketika menggunkan penulisan Query Builder
-use Illuminate\Support\Facades\DB;
+use DB;
 
-class JenisProdukController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // fungsi ini biasanya digunakan untuk mengarahkan ke file index
-        // vaeriabel jenis ini mendeklarasikan table yang diambil dari model
-        // untuk kemudian variabel tersebut dikirimkan ke view
-        $jenis = DB::table('jenis_produk')->get();
-
-        //return view mengarahkan ke view dan compact mengirim variabel ke view
-        return view ('admin.jenis.index', compact('jenis'));
-        // return view ('admin.jenis.index',['jenis' =>$jenis]);
-
+        //index untuk produk
+        $produk = Produk::join('jenis_produk', 'jenis_produk_id','=', 'jenis_produk.id')
+        ->select('produk.*', 'jenis_produk.nama as jenis')
+        ->get();
+        return view ('admin.produk.index', compact('produk'));
     }
 
     /**

@@ -1,8 +1,9 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JenisProdukController;
-
+use App\Http\Controllers\ProdukController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -38,5 +39,11 @@ route::prefix('admin')->group(function(){
     // route memanggil controller setiap fungsi,
     // (nanti lingnya menggunkan url, ada didalam view)
 Route::get('/jenis_produk', [JenisProdukController::class,'index']);
+
+//rout dengan pemanggilan class
+route::resource('produk',ProdukController::class);
+
 });
+
+
 
