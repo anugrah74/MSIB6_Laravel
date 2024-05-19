@@ -1,12 +1,12 @@
 <?php
-// jenis prooduk dan produkakan dibuat menggunakan
-// type penulisan Query Builder
+//jenis produk dan produk akan dibuat menggunakan
+//type penulisan Query Builder
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JenisProduk;
-//use DB:
-// library DB ini digunakan ketika menggunkan penulisan Query Builder
+// use DB;
+// library DB ini digunakan ketika menggunakan penulisan Query Builder
 use Illuminate\Support\Facades\DB;
 
 class JenisProdukController extends Controller
@@ -17,13 +17,12 @@ class JenisProdukController extends Controller
     public function index()
     {
         // fungsi ini biasanya digunakan untuk mengarahkan ke file index
-        // vaeriabel jenis ini mendeklarasikan table yang diambil dari model
-        // untuk kemudian variabel tersebut dikirimkan ke view
+        //variable jenis ini mendeklarasikan table yang diambil dari model
+        //untuk kemudian variable tersebut dikirimkan ke view
         $jenis = DB::table('jenis_produk')->get();
-
-        //return view mengarahkan ke view dan compact mengirim variabel ke view
+        //return view mengarahkan ke view dan compact mengirim variable ke view
         return view ('admin.jenis.index', compact('jenis'));
-        // return view ('admin.jenis.index',['jenis' =>$jenis]);
+        // return view ('admin.jenis.index', ['jenis' => $jenis]);
 
     }
 
@@ -40,7 +39,14 @@ class JenisProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //menambahkan data menggunakan query builder
+        DB::table('jenis_produk')->insert([
+            'nama'=> $request->nama,
+        ]);
+        //return view mengarahkan ke file sebelum proses atau akan diproses
+        //return redirect mengarahkan ke file setelah proses
+        return redirect('admin/jenis_produk');
+        // redirect()->back();
     }
 
     /**
