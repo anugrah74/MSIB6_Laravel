@@ -9,9 +9,10 @@ class Kartu extends Model
 {
     use HasFactory;
     protected $table = 'kartu';
-    protected $fillable = [
-        'kode', 'namaa', 'diskon', 'iuran'
-    ];
+
+    protected $fillable = ['kode', 'nama', 'diskon','iuran'];
+
+    public $timestamps = false;
 
     public function pelanggan(){
         return $this->hasMany(Pelanggan::class);
