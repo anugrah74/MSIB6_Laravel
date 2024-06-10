@@ -4,8 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Staff;
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Staff>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
 class StaffFactory extends Factory
 {
@@ -19,10 +20,10 @@ class StaffFactory extends Factory
     {
         return [
             //
-            'nip' => fake()-> unique()-> numerify(),
-            'nama' => fake()-> name(),
-            'alamat' => fake()-> address(),
-            'email' => fake()-> unique()-> safeEmail(),
+            'nip' => fake()->unique()->numerify(),
+            'name'=> fake()->name(),
+            'alamat' => fake()->address(),
+            'email' => fake()->unique()->safeEmail(),
         ];
     }
 }

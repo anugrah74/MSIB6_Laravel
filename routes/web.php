@@ -6,13 +6,17 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KartuController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BerandaController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', function(){
-    return view('front.home');
-});
+// Route::get('/', function(){
+//     return view('front.home');
+// });
+Route::get('/', [BerandaController::class, 'index']);
+Route::get('add-to-cart/{id}', [BerandaController::class, 'addToCart'])->name('add.to.cart');
 //contoh routing untuk mengarahkan ke view, tanpa melalui controller
 Route::get('/percobaan_pertama', function(){
     return view('hello');
@@ -32,9 +36,17 @@ Route::get('/daftar_nilai', function(){
 // Route::get('/dashboard', function(){
 //     return view ('admin.dashboard');
 // });
-
+//middleware berguna sebagai pembatas atau validasi antara visitor yang
+//sudah memiliki user akses dan belum memiliki akses
+Route::group(['middleware' => ['auth', 'checkActive', 'role:admin|manager|staff']], function(){
 //prefix and grouping adalah mengelompokkan routing ke satu jenis route
 Route::prefix('admin')->group(function(){
+Route::get('/user', [UserController::class, 'index']);
+Route::post('/user/{user}/activate',
+[UserController::class, 'activate'])->name('admin.user.activate');
+Route::get('/profile', [UserController::class, 'showProfile']);
+Route::patch('profile/{id}', [UserController::class, 'update']);
+//patch atau put dua syntax yang sama untuk digunakan sebagai pengubah data
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 //route by name adalah routing yang diberikan penamaan untuk kemudian dipanggil di link
     // route memanggil controller setiap fungsi,
@@ -49,3 +61,8 @@ Route::get('/kartu', [KartuController::class, 'index']);
 Route::post('/kartu/store', [KartuController::class, 'store']);
 
 });
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

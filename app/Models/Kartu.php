@@ -18,3 +18,4 @@ class Kartu extends Model
         return $this->hasMany(Pelanggan::class);
     }
 }
+

@@ -90,7 +90,7 @@ p {
             <div class="card border-0 shadow">
             @empty($pelanggan->foto)
                 <img src="{{url('admin/image/nophoto.jpg')}}" alt="...">
-            @else
+            @else 
             <img src="{{url('admin/image')}}/{{$pelanggan->foto}}" alt="...">
             @endempty
 

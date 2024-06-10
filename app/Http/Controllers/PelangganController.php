@@ -87,14 +87,14 @@ class PelangganController extends Controller
     public function update(Request $request, string $id)
     {
         //
-       //foto lama
+       //foto lama 
        $fotoLama = Pelanggan::select('foto')->where('id', $id)->get();
        foreach($fotoLama as $f1){
            $fotoLama = $f1->foto;
        }
-       //jika foto sudah ada yang terupload
+       //jika foto sudah ada yang terupload 
        if(!empty($request->foto)){
-           //maka proses selanjutnya
+           //maka proses selanjutnya 
        if(!empty($fotoLama->foto)) unlink(public_path('admin/image'.$fotoLama->foto));
        //proses ganti foto
            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();

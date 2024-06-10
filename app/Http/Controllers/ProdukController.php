@@ -58,7 +58,7 @@ class ProdukController extends Controller
             'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
             'foto.image' => 'File harus berbentuk image'
         ]
-
+    
     );
         //proses upload foto
         //jika file foto ada yang terupload
@@ -82,8 +82,8 @@ class ProdukController extends Controller
             'foto'=>$fileName,
             'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
-        Alert::success('Tambah Produk', 'Berhasil Menambahkan produk');
-        return redirect('admin/produk');
+        // Alert::success('Tambah Produk', 'Berhasil Menambahkan produk');
+        return redirect('admin/produk')->with('success', 'Berhasil Menambahkan Data');
     }
 
     /**
@@ -116,14 +116,14 @@ class ProdukController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        //foto lama
+        //foto lama 
         $fotoLama = DB::table('produk')->select('foto')->where('id',$id)->get();
         foreach($fotoLama as $f1){
             $fotoLama = $f1->foto;
         }
-        //jika foto sudah ada yang terupload
+        //jika foto sudah ada yang terupload 
         if(!empty($request->foto)){
-            //maka proses selanjutnya
+            //maka proses selanjutnya 
         if(!empty($fotoLama->foto)) unlink(public_path('admin/image'.$fotoLama->foto));
         //proses ganti foto
             $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();

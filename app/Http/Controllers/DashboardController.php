@@ -24,8 +24,8 @@ class DashboardController extends Controller
         ->selectRaw('jk, count(jk) as jumlah')
         ->groupBy('jk')
         ->get();
-        return view('admin.dashboard',
-        compact('produk', 'pelanggan','kartu', 'jenis_produk',
+        return view('admin.dashboard', 
+        compact('produk', 'pelanggan','kartu', 'jenis_produk', 
         'produkData', 'jenis_kelamin'));
     }
 }

@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class JenisProduk extends Model
 {
     use HasFactory;
-    //panggil table yang akan digunakan
+    //panggil nama table yang akan digunakan
     protected $table = 'jenis_produk';
 
-    //pangggil kolom yang ada di tabel (sesuai dengan yang ada didalam tabel )
+    //panggil kolom yang ada di table (sesuai dengan yang ada didalam table)
     protected $fillable = ['nama'];
 
+    //penanda atau pemanggilan class produk untuk relas one to many 
     public function produk(){
         return $this->hasMany(Produk::class);
     }
-
-
 }

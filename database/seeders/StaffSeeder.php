@@ -15,5 +15,6 @@ class StaffSeeder extends Seeder
     {
         //
         Staff::factory(15)->create();
+
     }
 }

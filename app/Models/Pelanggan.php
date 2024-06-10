@@ -13,7 +13,7 @@ class Pelanggan extends Model
         'kode', 'nama', 'jk','tmp_lahir','tgl_lahir','email','kartu_id'
     ];
     public $timestamps = false;
-
+    
     public function kartu(){
         return $this->belongsTo(Kartu::class);
     }

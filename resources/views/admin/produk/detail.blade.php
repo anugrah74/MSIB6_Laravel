@@ -443,11 +443,11 @@ b, strong {
         </div><!-- / column -->
 
         <div class="col-md-7">
-        @empty($p->foto)
-        <img src="{{url('admin/image/nophoto.jpg')}}"
+        @empty($p->foto)    
+        <img src="{{url('admin/image/nophoto.jpg')}}" 
             alt="project-image" class="rounded">
         @else
-        <img src="{{url('admin/image')}}/{{$p->foto}}"
+        <img src="{{url('admin/image')}}/{{$p->foto}}" 
             alt="project-image" class="rounded">
         @endempty
 

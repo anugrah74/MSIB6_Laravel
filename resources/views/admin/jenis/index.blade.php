@@ -12,13 +12,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="{{url('admin/jenis_produk/store')}}"
+        <form action="{{url('admin/jenis_produk/store')}}" 
         method="POST" enctype="multipart/form-data" >
             @csrf
         <input type="text" class="form-control" name="nama"
          id="exampleInputEmail1" aria-describedby="emailHelp"
         placeholder="Tambah Jenis Produk">
-
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                              <a href="" class="btn btn-md btn-primary"
+                              <a href="" class="btn btn-md btn-primary" 
                               data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <i class="fa-solid fa-square-plus">
 
@@ -62,7 +62,7 @@
                                             <th>Jenis Produk</th>
                                     </tfoot>
                                     <tbody>
-
+                                        
                                         @foreach($jenis as $j)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
