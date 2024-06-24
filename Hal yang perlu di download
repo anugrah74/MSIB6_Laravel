@@ -1,0 +1,9 @@
+1. mengganti env.
+2. composer install 
+3. php artisan key:generate
+4. php artisan migrate 
+5. composer require realrashid/sweet-alert
+6. composer require laravel/ui
+7. php artisan ui bootstrap --auth
+8. npm install && npm run dev
+9. composer require midtrans/midtrans-php
